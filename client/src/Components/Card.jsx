@@ -184,7 +184,7 @@ export default function Card({ result, setMessage, setResult }) {
                           }}
                         />
                     ) : (
-                        item.price
+                        <> ₹ {item.price} </>
                     )}
                 </td>
                 <td className={rowCellStyle}>
