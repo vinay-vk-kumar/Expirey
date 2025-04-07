@@ -35,8 +35,8 @@ export default function Dashboard() {
             .then((response) => {
     
                 console.log(response.data)
-                if(response.data.success){
-                    navigate("/dashboard"); // Redirect if token is valid
+                if(!response.data.success){
+                    navigate("/signin"); // Redirect if token is valid
                 } else{
                     localStorage.removeItem("authorization"); // Remove invalid token
                 }
