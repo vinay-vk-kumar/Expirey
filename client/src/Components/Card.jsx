@@ -139,7 +139,7 @@ export default function Card({ result, setMessage, setResult }) {
               <th className={headerCellStyle}>Sr No</th>
               <th className={headerCellStyle}>Name</th>
               <th className={headerCellStyle}>Price</th>
-              <th className={headerCellStyle}>Amount</th>
+              <th className={headerCellStyle}>Quantity</th>
               <th className={headerCellStyle}>Expiry Date</th>
               <th className={headerCellStyle}>Remaining Days</th>
               <th className={headerCellStyle}>Actions</th>
