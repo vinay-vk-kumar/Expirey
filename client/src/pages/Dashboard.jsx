@@ -25,6 +25,28 @@ export default function Dashboard() {
         }
     }, [message?.id])
 
+    const tryUser = () => {
+        const token = localStorage.getItem("authorization");
+        console.log(token)
+        if (token) {
+            const response = axios.get(`${BACKNED_URL}/api/v1/user/validate-token`, {
+                headers: { Authorization: token },
+            })
+            .then((response) => {
+    
+                console.log(response.data)
+                if(response.data.success){
+                    navigate("/dashboard"); // Redirect if token is valid
+                } else{
+                    localStorage.removeItem("authorization"); // Remove invalid token
+                }
+            })
+            .catch(() => {
+                localStorage.removeItem("authorization"); // Remove invalid token
+            });
+        }
+    }
+
     const fetchData = async() => {
         try{
                 const token = localStorage.getItem("authorization");
@@ -75,6 +97,7 @@ export default function Dashboard() {
     useEffect(() => {
         let interval;
         try{
+            tryUser()
             fetchData()
             fetchName()
             interval = setInterval(fetchData, 3 * 1000)
