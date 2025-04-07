@@ -12,7 +12,11 @@ const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/yourdb
 
 app.use(cookieParser());
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://expirey.onrender.com', 'https://expirey.vercel.app', 'https://expirey-vinay-vk-kumars-projects.vercel.app/'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true
+}));
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/expirey", expireyRouter);
 
