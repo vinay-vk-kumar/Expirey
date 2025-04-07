@@ -9,6 +9,7 @@ import Shooping from '../Icon/Shooping';
 
 export function SignUp() {
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
   const form = useForm({
     mode: 'uncontrolled',
     initialValues: { 
@@ -27,6 +28,7 @@ export function SignUp() {
 
   const handleSubmit = async (values) => {
     try{
+        setLoading(true)
         localStorage.removeItem("authorization")
         const response = await axios.post(`${BACKNED_URL}/api/v1/user/signup`,{
             name: values.name,
@@ -43,6 +45,8 @@ export function SignUp() {
     } catch(e){
         toast(e.response.data.message)
         console.log(e.message)
+    } finally{
+        setLoading(false)
     }
   }
   
@@ -88,7 +92,7 @@ export function SignUp() {
                         />
 
                         <Group justify="flex-end" className='mt-6'>
-                            <Button type="submit" fullWidth={true} >Submit</Button>
+                            <Button type="submit" fullWidth={true} loading={loading} >Submit</Button>
                         </Group>
                     </form>
                 </Box>
