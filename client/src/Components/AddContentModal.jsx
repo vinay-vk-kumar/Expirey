@@ -82,6 +82,7 @@ export const AddContentModal = ({ opened, onClose, setMessage }) => {
         setLoading(false)
         setName("");
         setQuantity(1);
+        setComment("")
         setPrice(null)
         setDate(null)
         onClose()
