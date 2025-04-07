@@ -97,7 +97,7 @@ export default function Dashboard() {
         }} setMessage={setMessage} />
 
         <div className='flex justify-between mx-3'>
-            <div className='flex text-center font-black text-black bg-[#FFF8F8] rounded-md mt-2 px-6 pt-3 font-bold cursor-pointer' onClick={() => navigate("/dashboard")}>
+            <div className='flex text-center font-black text-black bg-[#FFF8F8] rounded-md mt-2 px-12 pt-3 font-bold cursor-pointer' onClick={() => navigate("/dashboard")}>
                 {<Shooping className="h-10 mx-auto mb-2"/>}Expirey
             </div>
             <div className='flex items-center text-center font-black text-black bg-[#FFF8F8] rounded-md mt-2 px-15 mb-2 pb-2 font-bold cursor-pointer'>
