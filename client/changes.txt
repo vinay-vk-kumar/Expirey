@@ -1,0 +1,3 @@
+add your front end url in cors funtion
+
+backend url : expirey-backend.vercel.app
