@@ -3,6 +3,8 @@ import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
 import { SignUp } from './pages/SignUp'
 import { SignIn } from './pages/SignIn';
+import '@mantine/dates/styles.css';
+
 
 import { DatesProvider } from '@mantine/dates';
 
