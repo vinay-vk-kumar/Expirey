@@ -307,6 +307,7 @@ export default function Card({ result, setMessage, setResult }) {
 
           </tbody>
         </table>
+        {result.length == 0 ? (<div className='text-center mt-4 mb-4 text-xl'>No Item Found ...</div>) : ""}
       </div>
     </div>
   );
