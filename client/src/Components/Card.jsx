@@ -23,12 +23,12 @@ export default function Card({ result, setMessage, setResult }) {
     });
 
     const isValidFormData = () => {
-        const { name, price, quantity } = editFormData;
+        const { name, price, quantity, date } = editFormData;
       
         if (!name.trim()) return false;
         if (!price || isNaN(price) || price < 0) return false;
         if (!quantity || isNaN(quantity) || quantity < 1) return false;
-        // if (!date || !/^\d{2}\/\d{2}\/\d{4}$/.test(date)) return false;
+        if (!date || !/^\d{2}\/\d{2}\/\d{4}$/.test(date)) return false;
       
         return true;
       };
@@ -71,8 +71,8 @@ export default function Card({ result, setMessage, setResult }) {
             setMessage({ text: e.message, id: Date.now() });
 
         } finally{
-            setEditItemId(null);
             setDisable(false)
+            setEditItemId(null);
         }
         // Exit edit mode
     };
