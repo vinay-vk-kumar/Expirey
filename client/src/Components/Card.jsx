@@ -34,6 +34,7 @@ export default function Card({ result, setMessage, setResult }) {
       };
 
     const handleSave = async (id) => {
+        setDisable(true)
         if (!isValidFormData()) {
             setMessage({ text: "Please fill all fields correctly.", id: Date.now() });
             return;
@@ -69,9 +70,11 @@ export default function Card({ result, setMessage, setResult }) {
             console.log(e)
             setMessage({ text: e.message, id: Date.now() });
 
+        } finally{
+            setEditItemId(null);
+            setDisable(false)
         }
         // Exit edit mode
-        setEditItemId(null);
     };
     
     
@@ -233,7 +236,8 @@ export default function Card({ result, setMessage, setResult }) {
                             <div className="relative group inline-block">
                                 <button
                                     onClick={() => handleSave(item._id)}
-                                    className="text-green-500 hover:text-green-700 cursor-pointer"
+                                    className={`text-green-500 hover:text-green-700 cursor-pointer ${disable ? "text-green-700" : ""}`}
+                                    disabled={disable}
                                 >
                                 <TickIcons />
                                 </button>
