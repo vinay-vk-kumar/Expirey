@@ -89,7 +89,23 @@ export default function Dashboard() {
 
     }, [])
 
-
+    const getRemainingDays = (dateStr) => {
+        const [day, month, year] = dateStr.split("/");
+        const inputDate = new Date(`${year}-${month}-${day}`);
+        const today = new Date();
+      
+        inputDate.setHours(0, 0, 0, 0);
+        today.setHours(0, 0, 0, 0);
+      
+        const timeDiff = inputDate - today;
+      
+        if (timeDiff < 0) {
+          return -1; // Expired
+        }
+      
+        return Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+      };
+      
   return (
     <div className='min-h-screen'>
         <AddContentModal opened={modalOpen} onClose={() => {
@@ -120,7 +136,11 @@ export default function Dashboard() {
             </div>
 
             <div>
-            <Card result={result} setMessage={setMessage} setResult={setResult} />
+            <Card result={[...result].sort((a, b) => {
+                    const daysA = getRemainingDays(a.date);
+                    const daysB = getRemainingDays(b.date);
+                    return daysA - daysB; // Expired (-1) comes first
+                })} setMessage={setMessage} setResult={setResult} />
             </div>
         </div>
         <ToastContainer />
